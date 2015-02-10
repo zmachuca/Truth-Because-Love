@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.1.2'
 
 gem 'rails', '4.1.5'
 gem 'sass-rails', '~> 4.0.3'
@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass'
 gem 'aws-sdk', '~> 1.20.0'
 gem 'thin'
+gem 'stripe', '~> 1.18.0'
+gem "figaro"
 
 gem 'spring',        group: :development
 
