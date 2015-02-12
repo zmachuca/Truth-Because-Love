@@ -90,6 +90,5 @@ Rails.application.configure do
 }
 
 config.action_mailer.delivery_method = :mailgun
-config.action_mailer.mailgun_settings = {domain: 'truthbecauselove.mailgun.org'}
 
 end
