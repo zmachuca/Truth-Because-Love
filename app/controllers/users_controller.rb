@@ -30,6 +30,7 @@ class UsersController < ApplicationController
       if @user.save
         flash[:success] = "Your Purchase Was Successful! You should recieve an email shortly."
         ExampleMailer.sample_email(@user).deliver!
+        ExampleMailer.admin_email(@user).deliver!
         format.html { redirect_to root_path }
         format.json { render :show, status: :created, location: @user }
       else
