@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150212092438) do
     t.string   "state"
     t.string   "zip"
     t.string   "country"
-    t.integer  "design",     limit: 255
+    t.string   "design"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
