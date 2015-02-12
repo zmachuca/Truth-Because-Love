@@ -44,8 +44,10 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        flash[:success] = "Your Purchase Was Successful! You should recieve an email shortly."
+        ExampleMailer.sample_email(@user).deliver!
+        ExampleMailer.admin_email(@user).deliver!
+        format.html { redirect_to root_path }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
