@@ -4,7 +4,7 @@ end
 
 def create
 
-  @user.update_attributes(charge: true)
+  @event.update_attributes(charge: true)
   # Amount in cents
   @amount = 999
 
