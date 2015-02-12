@@ -32,11 +32,9 @@ class UsersController < ApplicationController
         ExampleMailer.sample_email(@user).deliver!
         ExampleMailer.admin_email(@user).deliver!
         format.html { redirect_to root_path }
-        format.json { render :show, status: :created, location: @user }
       else
         format.html { redirect_to root_path }
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+
       end
     end
   end
