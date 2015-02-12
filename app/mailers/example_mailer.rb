@@ -21,6 +21,7 @@ class ExampleMailer < ActionMailer::Base
 												    <p><strong>Zip Code:</strong> 						<%= @user.zip %></p>
 												    <p><strong>Country:</strong> 							<%= @user.country %></p>
 												    <p><strong>Letter Design Number:</strong> <%= @user.design %></p>
+												    <p><strong>YOUR Email:</strong> 					<%= @user.email %></p>
 												    <span><h2>You delivery will be completed shortly!</h2></span>
 												    <p>If you want to make my life harder contact: sup@truthbecauselove.com</p>
 												</body>
