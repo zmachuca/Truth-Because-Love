@@ -3,6 +3,8 @@ class ChargesController < ApplicationController
 end
 
 def create
+
+  @euser.update_attributes(charge: true)
   # Amount in cents
   @amount = 999
 
