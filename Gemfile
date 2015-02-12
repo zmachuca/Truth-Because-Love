@@ -13,6 +13,7 @@ gem 'aws-sdk', '~> 1.20.0'
 gem 'thin'
 gem 'stripe', '~> 1.18.0'
 gem "figaro"
+gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
 
 gem 'spring',        group: :development
 
