@@ -20,6 +20,8 @@ def create
     :currency    => 'usd'
   )
 
+  @user[:charge] == 1
+
 rescue Stripe::CardError => e
   flash[:error] = e.message
   redirect_to charges_path
