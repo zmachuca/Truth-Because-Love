@@ -157,8 +157,11 @@
 .buy-now {
 	background-color: #f7f7f7;
   border-bottom: 1px solid #dbdbdb;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
   padding-top: 25px;
+}
+
+.buy-now .container {
 }
 
 .buy-now h1 {
@@ -196,22 +199,74 @@
 	margin-bottom: 30px;
 }
 
-#buy-now-button {
-	padding: 15px;
-}
-
 #mc-embedded-subscribe-form {
 	margin-top: 30px;
 	margin-left: 100px;
 }
 
+.stripe-buy-now {
+	padding-top: 50px;
+	margin-top: 40px;
+	margin-left: 600px;
+}
+
+.form-control {
+	float: right;
+}
+
+
+/* --------------------------------------------- MAIN FORM*/
+
+.control-group {
+	padding-bottom: 15px;
+}
+
+#user_name {
+	width: 500px;
+	height: 40px;
+}
+
+#user_email {
+	width: 500px;
+	height: 40px;
+}
+
+#user_address {
+	width: 500px;
+	height: 40px;
+}
+
+#user_city {
+	width: 500px;
+	height: 40px;
+}
+
+#user_state {
+	width: 500px;
+	height: 40px;
+}
+
+#user_zip {
+	width: 500px;
+	height: 40px;
+}
+
+#user_country {
+	width: 500px;
+	height: 40px;
+}
+
+#user_design {
+	width: 500px;
+	height: 40px;
+}
+
+
 
 /* --------------------------------------------- BOTTOM EMAIL*/
 
 .bottom-email p {
-	margin-top: 50px;
-	padding-top: 40px;
-	padding-bottom: 5px;
+	margin-top: 100px;
 	font-weight: bold;
 	text-align: center;
 }

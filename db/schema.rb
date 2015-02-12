@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212054950) do
+ActiveRecord::Schema.define(version: 20150212092438) do
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20150212054950) do
     t.string   "address"
     t.string   "city"
     t.string   "state"
-    t.integer  "zip"
+    t.string   "zip"
     t.string   "country"
+    t.integer  "design",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,5 +1,6 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
+<div>
+<%= form_for(User.new) do |f| %>
+  <% if User.new.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -10,36 +11,54 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+<div class="form-horizontal">
+  <div class="col-md-6">
+    <div class="control-group">
+       <%= f.text_field :name, :placeholder => "Victim's Name" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+</div>
+<div class="form-horizontal">
+  <div class="col-md-6">
+    <div class="control-group">
+    <%= f.text_field :address, :placeholder => "Address Line" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
+</div>
+<div class="form-horizontal">
+  <div class="col-md-6">
+    <div class="control-group">
+    <%= f.text_field :city, :placeholder => "City" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
+</div>
+<div class="form-horizontal">
+  <div class="col-md-6">
+    <div class="control-group">
+    <%= f.text_field :state, :placeholder => "State" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :state %><br>
-    <%= f.text_field :state %>
+</div>
+<div class="form-horizontal">
+  <div class="col-md-6">
+    <div class="control-group">
+    <%= f.text_field :zip, :placeholder => "Zip Code" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :zip %><br>
-    <%= f.number_field :zip %>
+</div>
+<div class="form-horizontal">
+  <div class="col-md-6">
+    <div class="control-group">
+    <%= f.text_field :country, :placeholder => "Country" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :country %><br>
-    <%= f.text_field :country %>
+</div>
+<div class="form-horizontal">
+  <div class="col-md-6">
+    <div class="control-group">
+    <%= f.text_field :design, :placeholder => "Pick Your Design Number (1-9)" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>
+</div>
