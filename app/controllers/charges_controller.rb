@@ -1,5 +1,5 @@
 class ChargesController < ApplicationController
-def new
+	def new
 end
 
 def create
@@ -19,14 +19,6 @@ def create
     :description => 'Rails Stripe customer',
     :currency    => 'usd'
   )
-
-  respond_to do |format|
-       if @event.make_premium
-         format.html { redirect_to @event, :notice => 'Event was successfully upgraded.' }
-       else
-         // handle error and redirect
-       end
-    end
 
   @user[:charge] == 1
 
