@@ -4,7 +4,6 @@ class ExampleMailer < ActionMailer::Base
     @user = user
     mg_client = Mailgun::Client.new ENV['api_key']
     message_params = {:from    => ENV['gmail_username'],
-                      :to      => ENV['gmail_username'],
                       :to 		 => @user.email,
                       :subject => 'Yo! Your order is being processed!',
                       :text    => 'This is your receipt from www.TruthBecauseLove.com',
