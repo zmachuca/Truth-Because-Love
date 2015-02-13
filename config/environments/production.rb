@@ -98,7 +98,7 @@ Rails.application.configure do
 #    :domain         => 'yourapp.heroku.com',
 #    :authentication => :plain,
 #  }
-  config.action_mailer.delivery_method = :smtp
+# config.action_mailer.delivery_method = :smtp
 
   # Uncomment following to use SMTP settings for gmail 
    config.action_mailer.smtp_settings = {
