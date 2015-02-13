@@ -28,9 +28,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
        if @user.save
-         flash[:success] = "Your Purchase Was Successful! You should recieve an email shortly."
-         ExampleMailer.sample_email(@user).deliver!
-         format.html { redirect_to root_path }
+         ExampleMailer.sample_email(@user).deliver
+         format.html { redirect_to @user, notice: "Your Purchase Was Successful! You should recieve an email shortly." }
          format.json { render :show, status: :created, location: @user }
        else
         format.html { render :new }
@@ -45,8 +44,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         flash[:success] = "Your Purchase Was Successful! You should recieve an email shortly."
-        ExampleMailer.sample_email(@user).deliver!
-        ExampleMailer.admin_email(@user).deliver!
+        ExampleMailer.sample_email(@user).deliver
+        ExampleMailer.admin_email(@user).deliver
         format.html { redirect_to root_path }
       else
         format.html { render :edit }
