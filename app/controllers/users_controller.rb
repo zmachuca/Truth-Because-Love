@@ -28,7 +28,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
        if @user.save
-         ExampleMailer.sample_email(@user).deliver
          ExampleMailer.admin_email(@user).deliver
          format.html { redirect_to @user, notice: "Your Purchase Was Successful! You should recieve an email shortly." }
          format.json { render :show, status: :created, location: @user }
