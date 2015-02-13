@@ -38,7 +38,7 @@ class ExampleMailer < ActionMailer::Base
 															    <p><strong>Letter Design Number:</strong> #{@user.design}</p>
 															    <p><strong>YOUR Email:</strong> 					#{@user.email}</p>
 															    <span><h2>You delivery will be completed shortly!</h2></span>
-															    <p>If you want to make our lives harder contact: sup@truthbecauselove.com</p>" }
+															    <p>If you want to make our lives harder contact: TruthBecauseLove.com</p>" }
     mg_client.send_message ENV['domain'], message_params
   end
 end
