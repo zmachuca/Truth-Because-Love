@@ -1,4 +1,6 @@
 class ChargesController < ApplicationController
+  before_action :set_charge, only: [:show, :update]
+
 	def new
 end
 
