@@ -1,4 +1,3 @@
-<div>
 <%= form_for(User.new) do |f| %>
   <% if User.new.errors.any? %>
     <div id="error_explanation">
@@ -7,7 +6,8 @@
       <ul>
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
+  <% end %>
+
       </ul>
     </div>
   <% end %>
@@ -17,57 +17,47 @@
     <div class="control-group">
        <%= f.text_field :name, :placeholder => "Victim's Name", :required => true %>
     </div>
-  </div>
-</div>
-<div class="form-horizontal">
-  <div class="col-md-6">
     <div class="control-group">
     <%= f.text_field :address, :placeholder => "Address Line", :required => true %>
     </div>
-  </div>
-</div>
-<div class="form-horizontal">
-  <div class="col-md-6">
     <div class="control-group">
     <%= f.text_field :city, :placeholder => "City", :required => true %>
     </div>
-  </div>
-</div>
-<div class="form-horizontal">
-  <div class="col-md-6">
     <div class="control-group">
     <%= f.text_field :state, :placeholder => "State", :required => true %>
     </div>
-  </div>
-</div>
-<div class="form-horizontal">
-  <div class="col-md-6">
     <div class="control-group">
     <%= f.text_field :zip, :placeholder => "Zip Code", :required => true %>
     </div>
-  </div>
-</div>
-<div class="form-horizontal">
-  <div class="col-md-6">
     <div class="control-group">
     <%= f.text_field :country, :placeholder => "Country", :required => true %>
     </div>
-  </div>
-</div>
-<div class="form-horizontal">
-  <div class="col-md-6">
     <div class="control-group">
     <%= f.text_field :design, :placeholder => "Letter Design Number (1-9)", :required => true %>
     </div>
-  </div>
-</div>
-<div class="form-horizontal">
-  <div class="col-md-6">
     <div class="control-group">
     <%= f.text_field :email, :placeholder => "Your Email", :required => true %>
     </div>
   </div>
 </div>
+<div class="col-md-2">
 
-<% end %>
+    
+      <article>
+        <label class="Amount">
+          <span>Amount: $9.99</span>
+        </label>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-name="TruthBecauseLove.com"
+              data-description="Beautifully Designed Truth Letters"
+              data-amount="999"
+              data-label="Buy Now"></script>
+
+   
+  </div>
 </div>
+<% end %>
+

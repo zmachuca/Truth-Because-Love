@@ -28,9 +28,7 @@ class UsersController < ApplicationController
     if @user.save
       ExampleMailer.purchase_email(@user).deliver
       ExampleMailer.sale_email(@user).deliver
-      redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
-
-      begin
+    begin
     @amount = 999
 
   customer = Stripe::Customer.create(
@@ -44,10 +42,10 @@ class UsersController < ApplicationController
     :description => 'Rails Stripe Customer - TruthBecauseLove.com',
     :currency    => 'usd'
   )
-
+  redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to root_path
+    redirect_to charges_path
   end
      else
       render action: "new"
