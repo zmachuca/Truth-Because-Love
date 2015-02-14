@@ -32,7 +32,27 @@ class UsersController < ApplicationController
      else
       render action: "new"
     end
+
+  begin
+    @amount = 999
+
+  customer = Stripe::Customer.create(
+    :email => 'example@stripe.com',
+    :card  => params[:stripeToken]
+  )
+
+  charge = Stripe::Charge.create(
+    :customer    => customer.id,
+    :amount      => @amount,
+    :description => 'Rails Stripe Customer - TruthBecauseLove.com',
+    :currency    => 'usd'
+  )
+
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to root_path
   end
+end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
