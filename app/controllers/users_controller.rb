@@ -24,31 +24,42 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-    if @user.save
-      ExampleMailer.purchase_email(@user).deliver
-      ExampleMailer.sale_email(@user).deliver
+  @user = User.new(user_params)
+  if @user.save
+    ExampleMailer.purchase_email(@user).deliver
+    ExampleMailer.sale_email(@user).deliver
     begin
-    Rails.logger.error("STRIPE API KEY: #{Stripe.api_key.inspect}")
+      Rails.logger.error("STRIPE API KEY: #{Stripe.api_key.inspect}")
       @amount = 999
-   
-    customer = Stripe::Customer.create(
-      :email => 'example@stripe.com',
-      :card  => params[:stripeToken]
-    )
-   
-    charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => 'Rails Stripe Customer - TruthBecauseLove.com',
-      :currency    => 'usd'
-    )
-    redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
+     
+      customer = Stripe::Customer.create(
+        :email => 'example@stripe.com',
+        :card  => params[:stripeToken]
+      )
+       
+      charge = Stripe::Charge.create(
+        :customer    => customer.id,
+        :amount      => @amount,
+        :description => 'Rails Stripe Customer - TruthBecauseLove.com',
+        :currency    => 'usd'
+      )
+      redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
+        
+    rescue Stripe::StripeError => e
+      ExampleMailer.Stripe_error_email(@user).deliver
+      flash[:error] = e.message
+      redirect_to charges_path
+    rescue Stripe::APIConnectionError => e
+      ExampleMailer.API_error_email(@user).deliver
+      flash[:error] = e.message
+      redirect_to charges_path
+    rescue => e
+      ExampleMailer.NotStripe_error_email(@user).deliver
     end
-    else
-      render action: "new"
-    end
+  else
+    render action: "new"
   end
+end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
