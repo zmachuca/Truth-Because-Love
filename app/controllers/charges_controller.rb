@@ -6,7 +6,6 @@ end
 
 def create
 
-  @event.update_attributes(charge: true)
   # Amount in cents
   @amount = 999
 
@@ -21,8 +20,6 @@ def create
     :description => 'Rails Stripe Customer - TruthBecauseLove.com',
     :currency    => 'usd'
   )
-
-  @user[:charge] == 1
 
 rescue Stripe::CardError => e
   flash[:error] = e.message
