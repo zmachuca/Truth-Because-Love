@@ -43,7 +43,6 @@ class UsersController < ApplicationController
     :currency    => 'usd'
   )
   redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly.",
-  end
      else
       render action: "new"
     end
