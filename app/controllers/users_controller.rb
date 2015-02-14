@@ -45,17 +45,6 @@ class UsersController < ApplicationController
     )
     redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
     end
-    rescue Stripe::StripeError => e
-      ExampleMailer.Stripe_error_email(@user).deliver
-      flash[:error] = e.message
-      redirect_to charges_path
-    rescue Stripe::APIConnectionError => e
-      ExampleMailer.API_error_email(@user).deliver
-      flash[:error] = e.message
-      redirect_to charges_path
-    rescue => e
-      ExampleMailer.NotStripe_error_email(@user).deliver
-    end
     else
       render action: "new"
     end
