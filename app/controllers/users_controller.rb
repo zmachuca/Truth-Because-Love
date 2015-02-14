@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     :description => 'Rails Stripe Customer - TruthBecauseLove.com',
     :currency    => 'usd'
   )
-  redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly.",
+  redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
   rescue Stripe::StripeError => e
     ExampleMailer.Stripe_error_email(@user).deliver
     flash[:error] = e.message
