@@ -41,4 +41,66 @@ class ExampleMailer < ActionMailer::Base
                                   <p>...I said get to work.</p>" }
     mg_client.send_message ENV['domain'], message_params
   end
+
+  def Stripe_error_email(user)
+    @user = user
+    mg_client = Mailgun::Client.new ENV['api_key']
+    message_params = {:from    => ENV['gmail_username'],
+                      :to      => ENV['gmail_username'],
+                      :subject => 'STRIPE ERROR!',
+                      :text    => 'This is an error message',
+                      :html    => "<h1>Here is a review of their order...</h1>
+                                  <p><strong>Victim's Name:</strong>        #{@user.name}</p>
+                                  <p><strong>Address Line:</strong>         #{@user.address}</p>
+                                  <p><strong>City:</strong>                 #{@user.city}</p>
+                                  <p><strong>State:</strong>                #{@user.state}</p>
+                                  <p><strong>Zip Code:</strong>             #{@user.zip}</p>
+                                  <p><strong>Country:</strong>              #{@user.country}</p>
+                                  <p><strong>Letter Design Number:</strong> #{@user.design}</p>
+                                  <p><strong>YOUR Email:</strong>           #{@user.email}</p>
+                                  <span><h2>Get to work!</h2></span>
+                                  <p>...I said get to work.</p>" }
+    mg_client.send_message ENV['domain'], message_params
+  end
+  def API_error_email(user)
+    @user = user
+    mg_client = Mailgun::Client.new ENV['api_key']
+    message_params = {:from    => ENV['gmail_username'],
+                      :to      => ENV['gmail_username'],
+                      :subject => 'API ERROR!',
+                      :text    => 'This is an error message',
+                      :html    => "<h1>Here is a review of their order...</h1>
+                                  <p><strong>Victim's Name:</strong>        #{@user.name}</p>
+                                  <p><strong>Address Line:</strong>         #{@user.address}</p>
+                                  <p><strong>City:</strong>                 #{@user.city}</p>
+                                  <p><strong>State:</strong>                #{@user.state}</p>
+                                  <p><strong>Zip Code:</strong>             #{@user.zip}</p>
+                                  <p><strong>Country:</strong>              #{@user.country}</p>
+                                  <p><strong>Letter Design Number:</strong> #{@user.design}</p>
+                                  <p><strong>YOUR Email:</strong>           #{@user.email}</p>
+                                  <span><h2>Get to work!</h2></span>
+                                  <p>...I said get to work.</p>" }
+    mg_client.send_message ENV['domain'], message_params
+  end
+
+  def NotStripe_error_email(user)
+    @user = user
+    mg_client = Mailgun::Client.new ENV['api_key']
+    message_params = {:from    => ENV['gmail_username'],
+                      :to      => ENV['gmail_username'],
+                      :subject => 'NOT STRIPE ERROR!',
+                      :text    => 'This is an error message',
+                      :html    => "<h1>Here is a review of their order...</h1>
+                                  <p><strong>Victim's Name:</strong>        #{@user.name}</p>
+                                  <p><strong>Address Line:</strong>         #{@user.address}</p>
+                                  <p><strong>City:</strong>                 #{@user.city}</p>
+                                  <p><strong>State:</strong>                #{@user.state}</p>
+                                  <p><strong>Zip Code:</strong>             #{@user.zip}</p>
+                                  <p><strong>Country:</strong>              #{@user.country}</p>
+                                  <p><strong>Letter Design Number:</strong> #{@user.design}</p>
+                                  <p><strong>YOUR Email:</strong>           #{@user.email}</p>
+                                  <span><h2>Get to work!</h2></span>
+                                  <p>...I said get to work.</p>" }
+    mg_client.send_message ENV['domain'], message_params
+  end
 end
