@@ -29,11 +29,8 @@ class UsersController < ApplicationController
       ExampleMailer.purchase_email(@user).deliver
       ExampleMailer.sale_email(@user).deliver
       redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
-     else
-      render action: "new"
-    end
 
-  begin
+      begin
     @amount = 999
 
   customer = Stripe::Customer.create(
@@ -52,6 +49,9 @@ class UsersController < ApplicationController
     flash[:error] = e.message
     redirect_to root_path
   end
+     else
+      render action: "new"
+    end
 end
 
   # PATCH/PUT /users/1
