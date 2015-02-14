@@ -29,6 +29,9 @@ class UsersController < ApplicationController
       ExampleMailer.purchase_email(@user).deliver
       ExampleMailer.sale_email(@user).deliver
     begin
+
+  Rails.logger.error("STRIPE API KEY: #{Stripe.api_key.inspect}")
+  Rails.logger.error("IM GOING TO CHARGE THIS TOKEN: #{params[:stripeToken}")
     @amount = 999
 
   customer = Stripe::Customer.create(
