@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :users, :path => "charges#create"
   resources :charges
 
+	match 'charges', to: 'charges#create', via: :all
+
 end
