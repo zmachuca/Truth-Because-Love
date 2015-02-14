@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = current.user.charges.build
+    @user = User.new
   end
 
   # GET /users/1/edit
@@ -27,7 +27,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       ExampleMailer.sample_email(@user).deliver
-      ExampleMailer.admin_email(@user).deliver
       redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
      else
       render action: "new"
@@ -39,7 +38,6 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       ExampleMailer.sample_email(@user).deliver
-      ExampleMailer.admin_email(@user).deliver
       redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
     else
       render action: "new"
