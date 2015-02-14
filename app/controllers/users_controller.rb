@@ -26,7 +26,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      ExampleMailer.sample_email(@user).deliver
+      ExampleMailer.purchase_email(@user).deliver
+      ExampleMailer.sale_email(@user).deliver
       redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
      else
       render action: "new"
@@ -37,7 +38,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     if @user.update(user_params)
-      ExampleMailer.sample_email(@user).deliver
+      ExampleMailer.purchase_email(@user).deliver
+      ExampleMailer.sale_email(@user).deliver
       redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
     else
       render action: "new"
