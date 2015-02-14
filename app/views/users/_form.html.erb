@@ -41,8 +41,8 @@
   </div>
 </div>
 <div class="col-md-2">
-
-    
+  
+    <%= form_tag charges_path do %>
       <article>
         <label class="Amount">
           <span>Amount: $9.99</span>
@@ -56,7 +56,7 @@
               data-amount="999"
               data-label="Buy Now"></script>
 
-   
+    <% end %>
   </div>
 </div>
 <% end %>
