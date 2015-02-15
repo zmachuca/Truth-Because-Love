@@ -31,16 +31,16 @@ class UsersController < ApplicationController
     begin
       Rails.logger.error("STRIPE API KEY: #{Stripe.api_key.inspect}")
       @amount = 999
-     
+ 
       customer = Stripe::Customer.create(
         :email => 'example@stripe.com',
         :card  => params[:stripeToken]
       )
-       
+ 
       charge = Stripe::Charge.create(
         :customer    => customer.id,
         :amount      => @amount,
-        :description => 'Rails Stripe Customer - TruthBecauseLove.com',
+        :description => 'Rails Stripe Customer',
         :currency    => 'usd'
       )
       redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
