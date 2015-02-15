@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       @amount = 999
  
       customer = Stripe::Customer.create(
-        :email => user.email,
+        :email => @user.email,
         :card  => params[:stripeToken]
       )
       @user.stripe_customer_id = customer.id; @user.save
