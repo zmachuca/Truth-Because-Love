@@ -26,8 +26,6 @@ class UsersController < ApplicationController
   def create
   @user = User.new(user_params)
   if @user.save
-    ExampleMailer.purchase_email(@user).deliver
-    ExampleMailer.sale_email(@user).deliver
     begin
       Rails.logger.error("STRIPE API KEY: #{Stripe.api_key.inspect}")
       @amount = 999
@@ -36,6 +34,7 @@ class UsersController < ApplicationController
         :email => 'example@stripe.com',
         :card  => params[:stripeToken]
       )
+      @user.stripe_customer_id = customer.id; @user.save
  
       charge = Stripe::Charge.create(
         :customer    => customer.id,
@@ -43,8 +42,7 @@ class UsersController < ApplicationController
         :description => 'Rails Stripe Customer',
         :currency    => 'usd'
       )
-      redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
-        
+    redirect_to root_path, notice: "Your Purchase Was Successful! You should recieve an email shortly."
     rescue Stripe::StripeError => e
       ExampleMailer.Stripe_error_email(@user).deliver
       flash[:error] = e.message
@@ -56,6 +54,8 @@ class UsersController < ApplicationController
     rescue => e
       ExampleMailer.NotStripe_error_email(@user).deliver
     end
+    ExampleMailer.purchase_email(@user).deliver
+    ExampleMailer.sale_email(@user).deliver
   else
     render action: "new"
   end
