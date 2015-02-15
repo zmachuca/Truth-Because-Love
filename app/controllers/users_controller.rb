@@ -35,7 +35,7 @@ class UsersController < ApplicationController
         :card  => params[:stripeToken]
       )
       @user.stripe_customer_id = customer.id; @user.save
- 
+  
       charge = Stripe::Charge.create(
         :customer    => customer.id,
         :amount      => @amount,
