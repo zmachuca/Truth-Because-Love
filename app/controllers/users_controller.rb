@@ -48,18 +48,18 @@ class UsersController < ApplicationController
     rescue Stripe::StripeError => e
       ExampleMailer.Stripe_error_email(@user).deliver
       flash[:error] = e.message
-      redirect_to charges_path
+      redirect_to root_path
     rescue Stripe::APIConnectionError => e
       ExampleMailer.API_error_email(@user).deliver
       flash[:error] = e.message
-      redirect_to charges_path
+      redirect_to root_path
     rescue => e
       ExampleMailer.NotStripe_error_email(@user).deliver
       flash[:error] = e.message
-      redirect_to charges_path
+      redirect_to root_path
     end
   else
-    render action: "new"
+    redirect_to root_path, notice: "Sorry, Your Purchase Was Unsuccessful! :("
   end
 end
 
