@@ -7,29 +7,35 @@
 
 .nav {
 	background-color: #efefef;
-	padding-top: 10px;
+}
+
+.navbar-default .navbar-brand {
+	color: #D91E18;
+}
+
+.navbar-default .navbar-nav > .active > a {
+	color: #D91E18;
+	background-color: #efefef;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #D91E18;
 }
 
 .nav a {
 	color: #5a5a5a;
 	font-size: 18px;
 	font-weight: bold;
-	padding-top: 14px;
 	padding-bottom: 14px;
-	padding-left: 10px;
-	padding-right: 10px;
 	text-transform: uppercase;
-	color: #D91E18;
 }
 
-.nav li {
-  display: inline;
-}
 
 /* --------------------------------------------- JUMBOTRON */
 
 .jumbotron {
-  height: 550px;
+  height: 620px;
   background-image: url('http://goo.gl/VER1BN');
   background-repeat: no-repeat;
   background-size: cover;
@@ -74,7 +80,7 @@
 
 .our-process {
   border-bottom: 1px solid #dbdbdb;
-  padding-top: 25px;
+  padding-top: 30px;
   padding-bottom: 50px;
   min-width: 100%;
   min-height: 100px;
@@ -107,7 +113,7 @@
 /* --------------------------------------------- LETTER DESIGNS */
 
 .letter-designs {
-  padding-top: 25px;
+  padding-top: 30px;
   padding-bottom: 25px;
   background-color: #efefef;
   border-bottom: 1px solid #dbdbdb;
@@ -137,7 +143,7 @@
 
 .faq {
   border-bottom: 1px solid #dbdbdb;
-  padding-top: 25px;
+  padding-top: 30px;
   padding-bottom: 50px;
   min-width: 100%;
   min-height: 100px;
@@ -164,9 +170,9 @@
 /* --------------------------------------------- BUY NOW */
 
 .buy-now {
-	background-color: #f7f7f7;
+	background-color: #efefef;
   border-bottom: 1px solid #dbdbdb;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   padding-top: 25px;
   max-width: 100%;
 }
@@ -192,6 +198,15 @@
 
 #mc_embed_signup_scroll {
 	padding-top: 10px;
+	background-color: #efefef;
+}
+
+#mc_embed_signup {
+	background-color: #efefef;
+}
+
+.validate {
+	background-color: #efefef;
 }
 
 .stripe-buy-now {
